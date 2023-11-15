@@ -1,0 +1,98 @@
+/* Estilos para o site */
+/* Estilize conforme necessário */
+
+body {
+    background-color: burlywood;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .top-bar {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .empadas {
+    width: 70%;
+    float: left;
+    margin-left: 20%;
+  }
+  
+  .empada {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .empada img {
+    width: 30%;
+    height: auto;
+    border: 5px white;
+    border-radius: 20px;
+
+  }
+  
+  .carrinho {
+    width: 30%;
+    float: left;
+    padding: 10px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  /* Estilo para o botão de remover */
+  .remove-button {
+    background-color: #FF6347;
+  }
+  @media screen and (max-width: 768px) {
+    .empadas {
+      width: 100%;
+      float: none;
+    }
+  
+    .carrinho {
+      width: 100%;
+      float: none;
+      margin-top: 20px; /* Adiciona um espaço entre as seções */
+    }
+  
+    .empada {
+      width: 100%;
+      padding: 15px;
+      box-sizing: border-box; /* Garante que o padding não aumente o tamanho total do elemento */
+    }
+    
+    .empada img {
+      width: 100%;
+      height: auto;
+      border-radius: 0; /* Remova a borda arredondada para telas menores */
+    }
+  }
+  
+  /* Estilos para dispositivos com largura de até 480px, como smartphones */
+  @media screen and (max-width: 480px) {
+    .top-bar {
+      padding: 10px; /* Reduz o padding para economizar espaço */
+    }
+  
+    .empada {
+      padding: 10px;
+    }
+  
+    .button {
+      padding: 3px 8px; /* Reduz o padding do botão */
+    }
+  }

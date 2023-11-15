@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delivery de Empadas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top-bar">
+    <h1>Delicia de Empada</h1>
+    <!-- Aqui você pode adicionar elementos do topo que desejar -->
+  </header>
+
+  <main>
+    <section class="empadas">
+      <h2>Escolha sua empada:</h2>
+      <div class="empada-list">
+        <!-- Lista de empadas para escolha -->
+        <div class="empada">
+          <h3>Empada de Frango com catupiry</h3>
+          <img src="img/EMPADA NA MARMITA D12.png" alt="Empada de Frango">
+          <p>recheio de framgo com catury bem temperado e cremoso...</p>
+          <p>Preço R$ 8,00 </p>
+          <button onclick="adicionarAoCarrinho('Empada de Frango')">Adicionar ao Carrinho</button>
+        </div>
+        <div class="empada">
+          <h3>Empada de camarão</h3>
+          <img src="img/2.png" alt="Empada de camarão">
+          <p>recheio de camarão bem temperado, com catupiry delicioso...</p>
+          <p>Preço R$ 10,00 </p>
+          <button onclick="adicionarAoCarrinho('Empada de camarão')">Adicionar ao Carrinho</button>
+        </div>
+        <div class="empada">
+          <h3>Empadinha de Frango</h3>
+          <img src="img/3.png" alt="Empadinha de Frango">
+          <p></p>
+          <p>Preço R$ 2,00 </p>
+          <button onclick="adicionarAoCarrinho('Empadinha de Frango')">Adicionar ao Carrinho</button>
+        </div>
+        <div class="empada">
+          <h3>Empadinha de camarão</h3>
+          <img src="img/4.png" alt="Empadinha de camarão">
+          <p></p>
+          <p>Preço R$ 3,00 </p>
+          <button onclick="adicionarAoCarrinho('Empadinha de camarão')">Adicionar ao Carrinho</button>
+        </div>
+        <!-- Outras empadas aqui... -->
+      </div>
+    </section>
+
+    <aside class="carrinho">
+      <h2>Carrinho</h2>
+      <ul id="carrinho-lista">
+        <!-- Itens do carrinho aparecerão aqui -->
+      </ul>
+      <p>Total: R$ <span id="total">0.00</span></p>
+      <button onclick="enviarPedidoWhatsApp()">Enviar Pedido por WhatsApp</button>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
