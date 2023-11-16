@@ -88,6 +88,26 @@ body {
   }
   
   /* Estilos para dispositivos com largura de até 480px, como smartphones */
+  @media screen and (max-width: 768px) {
+    .empadas,
+    .carrinho {
+      width: 100%;
+      float: none;
+      margin-left: 0; /* Remova a margem na visualização mobile */
+      padding: 10px; /* Aumente o padding para separar os elementos */
+    }
+  
+    .empada {
+      width: 100%;
+      margin-bottom: 20px; /* Aumente o espaçamento entre as empadas */
+    }
+  
+    .empada img {
+      border-radius: 0; /* Remova a borda arredondada para telas menores */
+    }
+  }
+  
+  /* Estilos para dispositivos com largura de até 480px, como smartphones */
   @media screen and (max-width: 480px) {
     .top-bar {
       padding: 10px; /* Reduz o padding para economizar espaço */
@@ -97,7 +117,8 @@ body {
       padding: 10px;
     }
   
-    .button {
+    button {
       padding: 3px 8px; /* Reduz o padding do botão */
     }
   }
+  
