@@ -14,7 +14,12 @@ body {
     padding: 20px;
     text-align: center;
   }
-  
+  .top-bar1 {
+    background-color: #f70909;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+  }
   .empadas {
     width: 70%;
     float: left;
