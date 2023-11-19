@@ -48,7 +48,10 @@ function exibirItemCarrinho(item) {
   const novoItem = document.createElement('li');
 
   const spanEmpada = document.createElement('span');
-  spanEmpada.textContent = `${item.nome} - Quantidade: ${item.quantidade}`;
+  const textoCompleto = `${item.nome} - Quantidade: ${item.quantidade}`;
+  const textoSimplificado = `${item.nome} - Qtd: ${item.quantidade}`;
+
+  spanEmpada.textContent = isMobileDevice() ? textoSimplificado : textoCompleto;
   novoItem.appendChild(spanEmpada);
 
   const botaoRemover = document.createElement('button');
@@ -62,6 +65,9 @@ function exibirItemCarrinho(item) {
   carrinhoLista.appendChild(novoItem);
 }
 
+function isMobileDevice() {
+  return window.innerWidth <= 768; // Considerando que 768px seja o limite para dispositivos móveis
+}
 function atualizarCarrinho() {
   const carrinhoLista = document.getElementById('carrinho-lista');
   carrinhoLista.innerHTML = '';
