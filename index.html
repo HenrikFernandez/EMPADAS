@@ -10,7 +10,7 @@
     <h1>Delicia de Empada</h1>
     <!-- Aqui você pode adicionar elementos do topo que desejar -->
   </header>
-  <div class="top-bar1">
+  <div class="top-bar1 fade-in">
     <div class="aviso">
       <p>EMPADAS NA MARMITA ACIMA DE 5, ENCOMENDAR COM 24 HRS DE ANTECEDÊNCIA</p>
       <P>EMPADINHAS ACIMA DE 10 UNIDADES, ENCOMENDAR COM 24 HRS DE ANTECEDÊNCIA</P>
@@ -53,15 +53,20 @@
         <!-- Outras empadas aqui... -->
       </div>
     </section>
-
-    <aside class="carrinho">
-      <h2>Carrinho</h2>
-      <ul id="carrinho-lista">
-        <!-- Itens do carrinho aparecerão aqui -->
-      </ul>
-      <p>Total: R$ <span id="total">0.00</span></p>
-      <button onclick="enviarPedidoWhatsApp()">Enviar Pedido por WhatsApp</button>
-    </aside>
+    
+      <footer class="footer">
+        <aside class="carrinho">
+          <h2>Carrinho</h2>
+          <ul id="carrinho-lista">
+            <!-- Itens do carrinho aparecerão aqui -->
+          </ul>
+          <p>Total: R$ <span id="total">0.00</span></p>
+          <button onclick="enviarPedidoWhatsApp()">Enviar Pedido por WhatsApp</button>
+        </aside>
+      </footer>
+    
+    
+    
   </main>
 
   <script src="script.js"></script>

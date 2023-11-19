@@ -7,52 +7,90 @@ const precos = {
   };
   
   let totalCompra = 0;
-  
-  function adicionarAoCarrinho(empada) {
-    const carrinhoLista = document.getElementById('carrinho-lista');
-    const novoItem = document.createElement('li');
-  
-    const spanEmpada = document.createElement('span');
-    spanEmpada.textContent = empada;
-    novoItem.appendChild(spanEmpada);
-  
-    const precoEmpada = precos[empada];
-    totalCompra += precoEmpada;
-  
-    const botaoRemover = document.createElement('button');
-    botaoRemover.textContent = 'Remover';
-    botaoRemover.classList.add('remove-button');
-    botaoRemover.onclick = function() {
-      totalCompra -= precoEmpada;
-      atualizarTotalCompra();
-      carrinhoLista.removeChild(novoItem);
+let carrinho = [];
+
+function adicionarAoCarrinho(empada) {
+  const itemExistente = carrinho.find(item => item.nome === empada);
+
+  if (itemExistente) {
+    itemExistente.quantidade++;
+  } else {
+    const novoItem = {
+      nome: empada,
+      quantidade: 1,
+      preco: precos[empada]
     };
-  
-    novoItem.appendChild(botaoRemover);
-    carrinhoLista.appendChild(novoItem);
-  
+    carrinho.push(novoItem);
+  }
+
+  atualizarCarrinho();
+  atualizarTotalCompra();
+}
+
+function removerDoCarrinho(item) {
+  const itemExistente = carrinho.find(cartItem => cartItem.nome === item.nome);
+
+  if (itemExistente) {
+    if (itemExistente.quantidade > 1) {
+      itemExistente.quantidade--;
+    } else {
+      const index = carrinho.indexOf(item);
+      carrinho.splice(index, 1);
+    }
+
+    atualizarCarrinho();
     atualizarTotalCompra();
   }
-  
-  function atualizarTotalCompra() {
-    const totalElement = document.getElementById('total');
-    totalElement.textContent = totalCompra.toFixed(2);
-  }
-  
-  function enviarPedidoWhatsApp() {
-    const numeroWhatsApp = '92993706807';
-    let mensagem = 'Gostaria de fazer um pedido: ';
-  
-    const carrinhoLista = document.getElementById('carrinho-lista').getElementsByTagName('span');
-    for (let i = 0; i < carrinhoLista.length; i++) {
-      mensagem += carrinhoLista[i].textContent + ', ';
-    }
-  
-    mensagem += `Total: R$ ${totalCompra.toFixed(2)}.`; // Adiciona o valor total ao final da mensagem
-  
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-  
-    window.open(url, '_blank');
-  }
+}
+
+function exibirItemCarrinho(item) {
+  const carrinhoLista = document.getElementById('carrinho-lista');
+  const novoItem = document.createElement('li');
+
+  const spanEmpada = document.createElement('span');
+  spanEmpada.textContent = `${item.nome} - Quantidade: ${item.quantidade}`;
+  novoItem.appendChild(spanEmpada);
+
+  const botaoRemover = document.createElement('button');
+  botaoRemover.textContent = 'Remover';
+  botaoRemover.classList.add('remove-button');
+  botaoRemover.onclick = function() {
+    removerDoCarrinho(item);
+  };
+
+  novoItem.appendChild(botaoRemover);
+  carrinhoLista.appendChild(novoItem);
+}
+
+function atualizarCarrinho() {
+  const carrinhoLista = document.getElementById('carrinho-lista');
+  carrinhoLista.innerHTML = '';
+
+  carrinho.forEach(item => {
+    exibirItemCarrinho(item);
+  });
+}
+
+function atualizarTotalCompra() {
+  totalCompra = carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+
+  const totalElement = document.getElementById('total');
+  totalElement.textContent = totalCompra.toFixed(2);
+}
+
+function enviarPedidoWhatsApp() {
+  const numeroWhatsApp = '92993706807';
+  let mensagem = 'Gostaria de fazer um pedido: ';
+
+  carrinho.forEach(item => {
+    mensagem += `${item.nome} - Quantidade: ${item.quantidade}, `;
+  });
+
+  mensagem += `Total: R$ ${totalCompra.toFixed(2)}.`;
+
+  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+  window.open(url, '_blank');
+} 
   
   
